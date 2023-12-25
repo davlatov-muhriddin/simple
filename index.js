@@ -1,13 +1,14 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
+import express from "express";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import userRouter from "./router/user.js";
 
 const app = express();
 dotenv.config();
 
 app.use(express.json());
 
-app.use("/api/users/", require("./router/user"));
+app.use("/api/users/", userRouter);
 
 mongoose
   .connect(process.env.MONGO_URI, {
